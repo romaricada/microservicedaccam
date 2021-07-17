@@ -1,0 +1,51 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "microservicedaccam",
+    "relationships": [
+        {
+            "relationshipName": "candidatLot",
+            "otherEntityName": "candidatLot",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "candidatCautionLot"
+        },
+        {
+            "relationshipName": "caution",
+            "otherEntityName": "caution",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "candidatCautionLot"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "institutionFinanciere",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateDebut",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "montantCandidat",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "validationCandidat",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20200602194443",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceClass",
+    "entityTableName": "candidat_caution_lot",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination",
+    "microserviceName": "microservicedaccam"
+}

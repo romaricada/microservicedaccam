@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}">
+<head>
+    <title th:text="#{email.alerte.title(${tache})}">Notification: </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}"/>
+</head>
+<body>
+<p th:text="#{email.alerte.greeting(${user})}">M./Mme</p>
+<p th:text="#{email.alerte.text1(${message})}">Message de notification</p>
+<p>
+    <span th:text="#{email.alerte.text2}">Coordialement,</span>
+    <br/>
+    <em th:text="#{email.alerte.signature}">SGIMP-MENAPLN</em>
+</p>
+</body>
+</html>

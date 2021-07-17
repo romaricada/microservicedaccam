@@ -1,0 +1,40 @@
+{
+    "name": "TypeCommission",
+    "fields": [
+        {
+            "fieldName": "libelle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "membreCommission",
+            "otherEntityRelationshipName": "typeCommission",
+            "relationshipName": "commissions"
+        }
+    ],
+    "changelogDate": "20200526140339",
+    "entityTableName": "type_commission",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": [
+        "microservicedaccam"
+    ],
+    "skipClient": true
+}

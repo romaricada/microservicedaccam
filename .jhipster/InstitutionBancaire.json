@@ -1,0 +1,22 @@
+{
+  "fluentMethods": true,
+  "clientRootFolder": "microservicedaccam",
+  "relationships": [],
+  "fields": [
+    {
+      "fieldName": "libelle",
+      "fieldType": "String",
+      "fieldValidateRules": []
+    }
+  ],
+  "changelogDate": "20210309105800",
+  "dto": "no",
+  "searchEngine": false,
+  "service": "no",
+  "entityTableName": "institution_bancaire",
+  "databaseType": "sql",
+  "readOnly": false,
+  "jpaMetamodelFiltering": false,
+  "pagination": "no",
+  "microserviceName": "microservicedaccam"
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity CandidatCautionLot.
+    -->
+    <changeSet id="20200602194443-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="candidat_lot_id"
+                                 baseTableName="candidat_caution_lot"
+                                 constraintName="fk_candidat_caution_lot_candidat_lot_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="candidat_lot"/>
+
+        <addForeignKeyConstraint baseColumnNames="caution_id"
+                                 baseTableName="candidat_caution_lot"
+                                 constraintName="fk_candidat_caution_lot_caution_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="caution"/>
+
+    </changeSet>
+</databaseChangeLog>

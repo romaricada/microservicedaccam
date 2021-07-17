@@ -1,0 +1,47 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "microservicedaccam",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "tempsAlerte",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "typeMessage",
+            "fieldType": "TypeMessage",
+            "fieldValues": "DELAI,ALERTEDEBUT,ALERTEEXECUTION,ALERTEFIN",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "mesageCreation",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "messageExecution",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "messageFin",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20200617103113",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceClass",
+    "entityTableName": "delai_message",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination",
+    "microserviceName": "microservicedaccam"
+}

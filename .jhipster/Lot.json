@@ -1,0 +1,48 @@
+{
+    "name": "Lot",
+    "fields": [
+        {
+            "fieldName": "libelle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "activiteId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "infructueux",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "candidatLot",
+            "otherEntityRelationshipName": "lot",
+            "relationshipName": "candidatLots"
+        }
+    ],
+    "changelogDate": "20200526140346",
+    "entityTableName": "lot",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": [
+        "microservicedaccam"
+    ],
+    "skipClient": true
+}

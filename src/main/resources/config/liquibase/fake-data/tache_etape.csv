@@ -1,0 +1,11 @@
+id;etat;etape_activite_ppm_id;deleted
+1;ENCOURS;13311;true
+2;INITIAL;86721;false
+3;ENCOURS;73740;false
+4;ENCOURS;84070;false
+5;INITIAL;23321;true
+6;TERMINE;64882;false
+7;VALIDE;55774;true
+8;ENCOURS;33744;false
+9;TERMINE;33034;true
+10;INITIAL;48780;false

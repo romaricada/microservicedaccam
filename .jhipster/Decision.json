@@ -1,0 +1,48 @@
+{
+    "name": "Decision",
+    "fields": [
+        {
+            "fieldName": "structure",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "decision",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "reclamation",
+            "otherEntityRelationshipName": "decisions",
+            "relationshipName": "reclamation",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200526140350",
+    "entityTableName": "decision",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": [
+        "microservicedaccam"
+    ],
+    "skipClient": true
+}

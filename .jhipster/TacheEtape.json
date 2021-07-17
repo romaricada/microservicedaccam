@@ -1,0 +1,43 @@
+{
+    "name": "TacheEtape",
+    "fields": [
+        {
+            "fieldName": "etat",
+            "fieldType": "Etat",
+            "fieldValues": "INITIAL,ENCOURS,VALIDE,TERMINE"
+        },
+        {
+            "fieldName": "etapeActivitePpmId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tache",
+            "otherEntityRelationshipName": "tacheEtapes",
+            "relationshipName": "tache",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200526140347",
+    "entityTableName": "tache_etape",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": [
+        "microservicedaccam"
+    ],
+    "skipClient": true
+}

@@ -1,0 +1,43 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "microservicedaccam",
+    "relationships": [
+        {
+            "relationshipName": "reclamation",
+            "otherEntityName": "reclamation",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "reclamationCandidatLot"
+        },
+        {
+            "relationshipName": "candidatLot",
+            "otherEntityName": "candidatLot",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "reclamationCandidatLot"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "motif",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20200529124205",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceClass",
+    "entityTableName": "reclamation_candidat_lot",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination",
+    "microserviceName": "microservicedaccam"
+}

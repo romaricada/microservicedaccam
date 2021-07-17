@@ -1,0 +1,56 @@
+{
+    "name": "Tache",
+    "fields": [
+        {
+            "fieldName": "libelle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateCreation",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "tacheWorkflow",
+            "otherEntityRelationshipName": "tache",
+            "relationshipName": "tacheWorkflows"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "tacheEtape",
+            "otherEntityRelationshipName": "tache",
+            "relationshipName": "tacheEtapes"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "membreCommission",
+            "otherEntityRelationshipName": "tache",
+            "relationshipName": "membreCommissions"
+        }
+    ],
+    "changelogDate": "20200526140342",
+    "entityTableName": "tache",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": [
+        "microservicedaccam"
+    ],
+    "skipClient": true
+}

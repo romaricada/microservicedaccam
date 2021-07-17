@@ -1,0 +1,41 @@
+{
+    "name": "PieceCandidat",
+    "fields": [
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "candidatLot",
+            "otherEntityRelationshipName": "pieceCandidats",
+            "relationshipName": "candidatLot",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "piece",
+            "otherEntityRelationshipName": "pieceCandidats",
+            "relationshipName": "piece",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200526140354",
+    "entityTableName": "piece_candidat",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": [
+        "microservicedaccam"
+    ],
+    "skipClient": true
+}

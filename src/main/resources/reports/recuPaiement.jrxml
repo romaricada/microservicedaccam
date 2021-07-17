@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="recuPaiement" pageWidth="420" pageHeight="595" columnWidth="380" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0755270e-8b38-4ed7-9c66-bcd2b70cfb96">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="EXERCICE" class="java.lang.String"/>
+	<parameter name="jourDelivre" class="java.lang.String"/>
+	<parameter name="COPYRIGHT" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="nom" class="java.lang.String"/>
+	<field name="prenom" class="java.lang.String"/>
+	<field name="nomActivite" class="java.lang.String"/>
+	<field name="telephone" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="typeDepot" class="java.lang.Enum"/>
+	<field name="lieu" class="java.lang.String"/>
+	<pageHeader>
+		<band height="112" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="2" width="196" height="33" uuid="e13760e9-c535-456e-b5e9-06c867bd3b0a"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MINISTERE DE L’EDUCATION NATIONALE, DE L’ALPHABETISATION ET DE LA PROMOTION DES LANGUES NATIONALES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="35" width="76" height="12" uuid="a8615cb5-a574-43b0-8fbf-7a87841e0e52"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[———————]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="47" width="136" height="12" uuid="5a2ff23f-847e-4940-a609-36c0e0d03f6c"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SECRETARIAT GENERAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="59" width="76" height="12" uuid="d7cc29a4-24a6-47fe-a5ea-c5ff12384e1d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[———————]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="71" width="181" height="24" uuid="870c947a-8ace-46ef-9515-42ec0fc3ff4e"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECTION DE L’ADMINISTRATION ET DES FINANCES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="234" y="31" width="138" height="14" uuid="15dedb7d-6370-40c6-ba3f-9d5f789edb84"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNITE-PROGRES-JUSTICE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="18" width="76" height="12" uuid="0a84df86-9946-44a1-9f52-5235815e7c53"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[———————]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="227" y="1" width="153" height="17" uuid="ede2efd0-0c7d-4074-ab82-027d7e386982"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BURKINA FASO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="282" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="47" width="380" height="63" uuid="03cf3531-a93b-4108-8d31-283c00c45bd7"/>
+				<box>
+					<pen lineWidth="1.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Reçu de dépôt de l'activité"+" "+$F{nomActivite}+" de l'exercice "+$P{EXERCICE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="140" width="380" height="90" uuid="56e6d35d-9a15-40dc-991a-bde0e2ab4854"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nous accusons de reception du depôt de type" +" "+ $F{typeDepot}+" "+"de votre offre au titre du marché "+" "+$F{nomActivite}+" "+"de l'année "+$P{EXERCICE}+" "+". Le depôt a été effectué par M/Mme/Mlle "+$F{nom}+" "+$F{prenom}+" ayant le numéro de téléphone"+" "+$F{telephone}+", "+" et l'email"+" "+$F{email}+"."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="240" width="380" height="42" uuid="b656b3d4-16e8-4ed6-865e-abc4c915d429"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["En foi de quoi ce présent reçu est délivré pour servir et valoir ce que de droit."]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="65">
+			<textField>
+				<reportElement x="178" y="0" width="202" height="21" uuid="2ddfd586-4957-42dc-8e37-a65e40ccf18a"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fait à Ouagadougou le "+$P{jourDelivre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="50" width="178" height="15" uuid="31ebfe97-25cb-447d-b7b8-911e22c72419"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{COPYRIGHT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

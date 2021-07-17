@@ -1,0 +1,53 @@
+{
+    "name": "Reclamation",
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "candidatLot",
+            "otherEntityRelationshipName": "reclamation",
+            "relationshipName": "candidatLots"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "decision",
+            "otherEntityRelationshipName": "reclamation",
+            "relationshipName": "decisions"
+        }
+    ],
+    "changelogDate": "20200526140351",
+    "entityTableName": "reclamation",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "microservicedaccam",
+    "applications": [
+        "microservicedaccam"
+    ],
+    "skipClient": true,
+    "searchEngine": false,
+    "databaseType": "sql",
+    "microserviceName": "microservicedaccam"
+}

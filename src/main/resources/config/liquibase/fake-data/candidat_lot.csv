@@ -1,0 +1,11 @@
+id;est_candidat;soumissionnaire;attributaire;titulaire;montant;dossier_paye;nombre_point;deleted
+1;true;false;true;true;33490;true;13927;false
+2;true;true;true;false;53346;true;89389;true
+3;true;true;false;true;31172;true;24848;true
+4;true;false;false;false;56988;true;76245;false
+5;true;true;false;false;82125;true;11063;false
+6;true;false;false;true;39728;true;79729;true
+7;false;false;false;false;72225;true;72003;false
+8;true;true;true;true;54272;true;25179;true
+9;false;true;false;true;90845;false;58339;false
+10;false;false;false;false;94728;true;15335;true

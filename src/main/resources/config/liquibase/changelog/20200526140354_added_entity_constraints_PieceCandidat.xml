@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity PieceCandidat.
+    -->
+    <changeSet id="20200526140354-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="candidat_lot_id"
+                                 baseTableName="piece_candidat"
+                                 constraintName="fk_piece_candidat_candidat_lot_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="candidat_lot"/>
+
+        <addForeignKeyConstraint baseColumnNames="piece_id"
+                                 baseTableName="piece_candidat"
+                                 constraintName="fk_piece_candidat_piece_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="piece"/>
+
+    </changeSet>
+</databaseChangeLog>

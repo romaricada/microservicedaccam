@@ -1,0 +1,48 @@
+{
+    "name": "TacheWorkflow",
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tache",
+            "otherEntityRelationshipName": "tacheWorkflows",
+            "relationshipName": "tache",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "workflow",
+            "otherEntityRelationshipName": "tacheWorkflows",
+            "relationshipName": "workflow",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200526140344",
+    "entityTableName": "tache_workflow",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": [
+        "microservicedaccam"
+    ],
+    "skipClient": true
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity CandidatLot.
+    -->
+    <changeSet id="20200526140349-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="lot_id"
+                                 baseTableName="candidat_lot"
+                                 constraintName="fk_candidat_lot_lot_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="lot"/>
+
+        <addForeignKeyConstraint baseColumnNames="candidat_id"
+                                 baseTableName="candidat_lot"
+                                 constraintName="fk_candidat_lot_candidat_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="candidat"/>
+
+        <addForeignKeyConstraint baseColumnNames="deliberation_id"
+                                 baseTableName="candidat_lot"
+                                 constraintName="fk_candidat_lot_deliberation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="deliberation"/>
+
+        <addForeignKeyConstraint baseColumnNames="depouillement_id"
+                                 baseTableName="candidat_lot"
+                                 constraintName="fk_candidat_lot_depouillement_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="depouillement"/>
+
+        <addForeignKeyConstraint baseColumnNames="reclamation_id"
+                                 baseTableName="candidat_lot"
+                                 constraintName="fk_candidat_lot_reclamation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="reclamation"/>
+
+    </changeSet>
+</databaseChangeLog>

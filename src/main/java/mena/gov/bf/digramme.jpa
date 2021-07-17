@@ -1,0 +1,910 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entity-mappings v="5.4.3" rws="_161623912945795" cws="_161623912945795" persistenceUnitName="DEFAULT_PU" sm="false" xs="false" id="_16158498768413" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <mapped-superclass compositePrimaryKeyClass="AbstractAuditingEntityPK" abs="true" class="AbstractAuditingEntity" v="true" xre="false" m="false" rootElement="_16158498768413" id="_161584987970016">
+        <attributes>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="createdBy" jbt="false" id="_161584987970017">
+                <column name="created_by" unique="false" nullable="false" insertable="true" updatable="false" length="50"/>
+            </basic>
+            <basic attribute-type="java.time.Instant" v="true" am="PRIVATE" name="createdDate" dv="[ java.time.Instant ] Instant.now()" jbt="false" id="_161584987982818">
+                <column name="created_date" unique="false" nullable="true" insertable="true" updatable="false"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="lastModifiedBy" jbt="false" id="_161584987983119">
+                <column name="last_modified_by" unique="false" nullable="true" insertable="true" updatable="true" length="50"/>
+            </basic>
+            <basic attribute-type="java.time.Instant" v="true" am="PRIVATE" name="lastModifiedDate" dv="[ java.time.Instant ] Instant.now()" jbt="false" id="_161584987994420">
+                <column name="last_modified_date" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+        </attributes>
+        <el>
+            <ln e="true" n="AuditingEntityListener"/>
+        </el>
+    </mapped-superclass>
+    <entity compositePrimaryKeyClass="InstitutionFinancierePK" abs="false" class="InstitutionFinanciere" v="true" xre="false" m="false" rootElement="_16158498768413" id="_16158498775954">
+        <attributes>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="libelle" jbt="false" id="_16158498781416">
+                <column name="libelle" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_16158498776135">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="institution_financiere"/>
+    </entity>
+    <entity compositePrimaryKeyClass="MembreCommissionPK" abs="false" class="MembreCommission" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_16158498784307">
+        <attributes>
+            <basic attribute-type="Long" v="true" am="PRIVATE" name="activiteId" jbt="false" id="_16158498787069">
+                <column name="activite_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="referenceArrete" jbt="false" id="_161584987902410">
+                <column name="reference_arrete" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="mena.gov.bf.domain.enumeration.Poste" v="true" am="PRIVATE" name="poste" jbt="false" id="_161584987932811">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="poste" unique="false" nullable="false" insertable="true" updatable="true"/>
+                <enumerated>STRING</enumerated>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_161584987934012">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="deleted" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <many-to-one primaryKey="false" connected-entity-id="_1615849892170106" connected-attribute-id="_1615849893645114" fetch="LAZY" v="true" am="PRIVATE" name="membre" jbt="false" id="_161584987964813">
+                <cascade/>
+            </many-to-one>
+            <many-to-one primaryKey="false" connected-entity-id="_161584988737167" connected-attribute-id="_161584988793671" fetch="LAZY" v="true" am="PRIVATE" name="typeCommission" jbt="false" id="_161584987965214">
+                <cascade/>
+            </many-to-one>
+            <many-to-one primaryKey="false" connected-entity-id="_1615849901024178" connected-attribute-id="_1615849902742193" fetch="LAZY" v="true" am="PRIVATE" name="tache" jbt="false" id="_161584987965315">
+                <cascade/>
+            </many-to-one>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_16158498784308">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="membre_commission"/>
+    </entity>
+    <entity compositePrimaryKeyClass="CautionPK" abs="false" class="Caution" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_161584987994621">
+        <attributes>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="libelle" jbt="false" id="_161584988023923">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="libelle" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Double" v="true" am="PRIVATE" name="montant" jbt="false" id="_161584988054224">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="montant" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Integer" v="true" am="PRIVATE" name="validite" jbt="false" id="_161584988087825">
+                <column name="validite" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_161584988115526">
+                <column name="deleted" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <many-to-one primaryKey="false" connected-entity-id="_1615849897377145" fetch="LAZY" v="true" am="PRIVATE" name="lot" jbt="false" id="_161584988144827">
+                <cascade/>
+            </many-to-one>
+            <many-to-one primaryKey="false" connected-entity-id="_1615849905123207" fetch="LAZY" v="true" am="PRIVATE" name="typeCaution" jbt="false" id="_161584988144928">
+                <cascade/>
+            </many-to-one>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_161584987994622">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="caution"/>
+    </entity>
+    <entity compositePrimaryKeyClass="ReceptionPK" abs="false" class="Reception" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_161584988145029">
+        <attributes>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="nom" jbt="false" id="_161584988173231">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="nom" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="prenom" jbt="false" id="_161584988199732">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="prenom" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="telephone" jbt="false" id="_161584988226833">
+                <column name="telephone" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="email" jbt="false" id="_161584988260534">
+                <column name="email" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="java.time.LocalDate" v="true" am="PRIVATE" name="date" jbt="false" id="_161584988295035">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="date" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="heure" jbt="false" id="_161584988295236">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="heure" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="lieu" jbt="false" id="_161584988320537">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="lieu" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Long" v="true" am="PRIVATE" name="activiteId" jbt="false" id="_161584988350438">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="activite_id" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="retirer" jbt="false" id="_161584988375539">
+                <column name="retirer" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="mena.gov.bf.domain.enumeration.TypeReception" v="true" am="PRIVATE" name="typeReception" jbt="false" id="_161584988400340">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="type_reception" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <enumerated>STRING</enumerated>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_161584988400441">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="deleted" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_161584988145030">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="reception"/>
+    </entity>
+    <entity compositePrimaryKeyClass="DecisionPK" abs="false" class="Decision" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_161584988424842">
+        <attributes>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="structure" jbt="false" id="_161584988448644">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="structure" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="reference" jbt="false" id="_161584988473645">
+                <column name="reference" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="java.time.LocalDate" v="true" am="PRIVATE" name="date" jbt="false" id="_161584988500946">
+                <column name="date" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="decision" jbt="false" id="_161584988501047">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="decision" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_161584988542248">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="deleted" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <many-to-one primaryKey="false" connected-entity-id="_161584988913578" fetch="LAZY" v="true" am="PRIVATE" name="reclamation" jbt="false" id="_161584988569849">
+                <cascade/>
+            </many-to-one>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_161584988424843">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="decision"/>
+    </entity>
+    <entity compositePrimaryKeyClass="PieceCandidatPK" abs="false" class="PieceCandidat" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_161584988569950">
+        <attributes>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_161584988593352">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="deleted" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <many-to-one primaryKey="false" connected-entity-id="_1615849893646115" connected-attribute-id="_1615849895725127" fetch="LAZY" v="true" am="PRIVATE" name="candidatLot" jbt="false" id="_161584988614253">
+                <cascade/>
+            </many-to-one>
+            <many-to-one primaryKey="false" connected-entity-id="_161584988989885" connected-attribute-id="_161584989064989" fetch="LAZY" v="true" am="PRIVATE" name="piece" jbt="false" id="_161584988614354">
+                <cascade/>
+            </many-to-one>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_161584988569951">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="piece_candidat"/>
+    </entity>
+    <entity compositePrimaryKeyClass="TacheEtapePK" abs="false" class="TacheEtape" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_161584988614555">
+        <attributes>
+            <basic attribute-type="mena.gov.bf.domain.enumeration.Etat" v="true" am="PRIVATE" name="etat" jbt="false" id="_161584988639557">
+                <column name="etat" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <enumerated>STRING</enumerated>
+            </basic>
+            <basic attribute-type="Long" v="true" am="PRIVATE" name="etapeActivitePpmId" jbt="false" id="_161584988639658">
+                <column name="etape_activite_ppm_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="etapeLibelle" jbt="false" id="_161584988661059">
+                <column name="etape_libelle" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_161584988680360">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="deleted" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="estRealise" jbt="false" id="_161584988699261">
+                <column name="est_realise" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="java.time.LocalDate" v="true" am="PRIVATE" name="dateDebut" jbt="false" id="_161584988718063">
+                <column name="date_debut" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="java.time.LocalDate" v="true" am="PRIVATE" name="dateFin" jbt="false" id="_161584988718064">
+                <column name="date_fin" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Long" v="true" am="PRIVATE" name="delai" jbt="false" id="_161584988718165">
+                <column name="delai" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="mena.gov.bf.domain.enumeration.TypeDelai" v="true" am="PRIVATE" name="typeDelai" jbt="false" id="_161584988737066">
+                <column name="type_delai" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <enumerated>STRING</enumerated>
+            </basic>
+            <many-to-one primaryKey="false" connected-entity-id="_1615849901024178" connected-attribute-id="_1615849902741192" fetch="LAZY" v="true" am="PRIVATE" name="tache" jbt="false" id="_161584988718062">
+                <cascade/>
+            </many-to-one>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_161584988614556">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="tache_etape"/>
+    </entity>
+    <entity compositePrimaryKeyClass="TypeCommissionPK" abs="false" class="TypeCommission" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_161584988737167">
+        <attributes>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="libelle" jbt="false" id="_161584988756069">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="libelle" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_161584988774870">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="deleted" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <one-to-many own="false" collection-type="java.util.Set" connected-entity-id="_16158498784307" connected-attribute-id="_161584987965214" v="true" am="PRIVATE" name="commissions" dv="[ java.util.Set , java.util.HashSet ] new HashSet&lt;&gt;()" jbt="false" id="_161584988793671">
+                <cascade/>
+            </one-to-many>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_161584988737168">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="type_commission"/>
+    </entity>
+    <entity compositePrimaryKeyClass="PersistentAuditEventPK" abs="false" class="PersistentAuditEvent" v="true" xre="false" m="false" rootElement="_16158498768413" id="_161584988794372">
+        <attributes>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="principal" jbt="false" id="_161584988807674">
+                <bv>
+                    <nn/>
+                </bv>
+                <column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="java.time.Instant" v="true" am="PRIVATE" name="auditEventDate" jbt="false" id="_161584988821575">
+                <column name="event_date" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="auditEventType" jbt="false" id="_161584988821676">
+                <column name="event_type" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <element-collection target-class="java.lang.String" collection-type="java.util.Map" mkt="NEW" v="true" am="PRIVATE" name="data" dv="[ java.util.HashMap , java.util.Map ] new HashMap&lt;&gt;()" jbt="false" id="_161584988834577">
+                <mkc name="name" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <column name="value" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <collection-table name="jhi_persistent_audit_evt_data">
+                    <join-column name="EVENT_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+                </collection-table>
+            </element-collection>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_161584988794373">
+                <column name="event_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="jhi_persistent_audit_event"/>
+    </entity>
+    <entity compositePrimaryKeyClass="ReclamationPK" abs="false" class="Reclamation" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_161584988913578">
+        <attributes>
+            <basic attribute-type="java.time.LocalDate" v="true" am="PRIVATE" name="date" jbt="false" id="_161584988932580">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="date" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_161584988932581">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="deleted" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="description" jbt="false" id="_161584988951382">
+                <column name="description" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Long" v="true" am="PRIVATE" name="lotId" jbt="false" id="_161584988970383">
+                <column name="lot_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <one-to-many own="false" collection-type="java.util.Set" connected-entity-id="_161584989065190" connected-attribute-id="_161584989109695" v="true" am="PRIVATE" name="reclamationCandidatLots" dv="[ java.util.Set , java.util.HashSet ] new HashSet&lt;&gt;()" jbt="false" id="_161584988989684">
+                <cascade/>
+            </one-to-many>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_161584988913579">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="reclamation"/>
+    </entity>
+    <entity compositePrimaryKeyClass="PiecePK" abs="false" class="Piece" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_161584988989885">
+        <attributes>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="nomPiece" jbt="false" id="_161584989019287">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="nom_piece" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_161584989038688">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="deleted" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <one-to-many own="false" collection-type="java.util.Set" connected-entity-id="_161584988569950" connected-attribute-id="_161584988614354" v="true" am="PRIVATE" name="pieceCandidats" dv="[ java.util.Set , java.util.HashSet ] new HashSet&lt;&gt;()" jbt="false" id="_161584989064989">
+                <cascade/>
+            </one-to-many>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_161584988989886">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="piece"/>
+    </entity>
+    <entity compositePrimaryKeyClass="ReclamationCandidatLotPK" abs="false" class="ReclamationCandidatLot" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_161584989065190">
+        <attributes>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="motif" jbt="false" id="_161584989080092">
+                <column name="motif" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="java.time.LocalDate" v="true" am="PRIVATE" name="date" jbt="false" id="_161584989095893">
+                <column name="date" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_161584989095894">
+                <column name="deleted" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <many-to-one primaryKey="false" connected-entity-id="_161584988913578" connected-attribute-id="_161584988989684" fetch="LAZY" v="true" am="PRIVATE" name="reclamation" jbt="false" id="_161584989109695">
+                <cascade/>
+            </many-to-one>
+            <many-to-one primaryKey="false" connected-entity-id="_1615849893646115" fetch="LAZY" v="true" am="PRIVATE" name="candidatLot" jbt="false" id="_161584989109696">
+                <cascade/>
+            </many-to-one>
+            <many-to-one primaryKey="false" connected-entity-id="_161584988424842" fetch="LAZY" v="true" am="PRIVATE" name="decision" jbt="false" id="_161584989109797">
+                <cascade/>
+            </many-to-one>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_161584989065191">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="reclamation_candidat_lot"/>
+    </entity>
+    <entity compositePrimaryKeyClass="DeliberationPK" abs="false" class="Deliberation" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_161584989109798">
+        <attributes>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="description" jbt="false" id="_1615849891314100">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="description" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="java.time.LocalDate" v="true" am="PRIVATE" name="date" jbt="false" id="_1615849891516101">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="date" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Long" v="true" am="PRIVATE" name="lotId" jbt="false" id="_1615849891516102">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="lot_id" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="valide" jbt="false" id="_1615849891722103">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="valide" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_1615849891951104">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="deleted" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <one-to-many own="false" collection-type="java.util.Set" connected-entity-id="_1615849893646115" connected-attribute-id="_1615849895726130" v="true" am="PRIVATE" name="candidatLots" dv="[ java.util.Set , java.util.HashSet ] new HashSet&lt;&gt;()" jbt="false" id="_1615849892169105">
+                <cascade/>
+            </one-to-many>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_161584989109899">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="deliberation"/>
+    </entity>
+    <entity compositePrimaryKeyClass="MembrePK" abs="false" class="Membre" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_1615849892170106">
+        <attributes>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="nom" jbt="false" id="_1615849892373108">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="nom" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="prenom" jbt="false" id="_1615849892600109">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="prenom" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="telephone" jbt="false" id="_1615849892818110">
+                <column name="telephone" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="email" jbt="false" id="_1615849893023111">
+                <column name="email" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Long" v="true" am="PRIVATE" name="directionId" jbt="false" id="_1615849893232112">
+                <column name="direction_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_1615849893440113">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="deleted" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <one-to-many own="false" collection-type="java.util.Set" connected-entity-id="_16158498784307" connected-attribute-id="_161584987964813" v="true" am="PRIVATE" name="commissions" dv="[ java.util.Set , java.util.HashSet ] new HashSet&lt;&gt;()" jbt="false" id="_1615849893645114">
+                <cascade/>
+            </one-to-many>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_1615849892170107">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="membre"/>
+    </entity>
+    <entity compositePrimaryKeyClass="CandidatLotPK" abs="false" class="CandidatLot" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_1615849893646115">
+        <attributes>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="estCandidat" jbt="false" id="_1615849893845117">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="est_candidat" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="soumissionnaire" jbt="false" id="_1615849894037118">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="soumissionnaire" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="attributaire" jbt="false" id="_1615849894224119">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="attributaire" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="titulaire" jbt="false" id="_1615849894412120">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="titulaire" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Float" v="true" am="PRIVATE" name="montant" jbt="false" id="_1615849894600121">
+                <column name="montant" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="dossierPaye" jbt="false" id="_1615849894791122">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="dossier_paye" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Double" v="true" am="PRIVATE" name="nombrePoint" jbt="false" id="_1615849894980123">
+                <column name="nombre_point" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_1615849895166124">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="deleted" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="retenu" jbt="false" id="_1615849895350125">
+                <column name="retenu" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Long" v="true" am="PRIVATE" name="contratId" jbt="false" id="_1615849895538126">
+                <column name="contrat_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <many-to-one primaryKey="false" connected-entity-id="_1615849897377145" connected-attribute-id="_1615849898792153" fetch="LAZY" v="true" am="PRIVATE" name="lot" jbt="false" id="_1615849895726128">
+                <cascade/>
+            </many-to-one>
+            <many-to-one primaryKey="false" connected-entity-id="_1615849896302138" connected-attribute-id="_1615849897375144" fetch="LAZY" v="true" am="PRIVATE" name="candidat" jbt="false" id="_1615849895726129">
+                <cascade/>
+            </many-to-one>
+            <many-to-one primaryKey="false" connected-entity-id="_161584989109798" connected-attribute-id="_1615849892169105" fetch="LAZY" v="true" am="PRIVATE" name="deliberation" jbt="false" id="_1615849895726130">
+                <cascade/>
+            </many-to-one>
+            <many-to-one primaryKey="false" connected-entity-id="_1615849902743195" connected-attribute-id="_1615849905120206" fetch="LAZY" v="true" am="PRIVATE" name="depouillement" jbt="false" id="_1615849895727131">
+                <cascade/>
+            </many-to-one>
+            <one-to-many own="false" collection-type="java.util.Set" connected-entity-id="_161584988569950" connected-attribute-id="_161584988614253" v="true" am="PRIVATE" name="pieceCandidats" dv="[ java.util.Set , java.util.HashSet ] new HashSet&lt;&gt;()" jbt="false" id="_1615849895725127">
+                <cascade/>
+            </one-to-many>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_1615849893647116">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="candidat_lot"/>
+    </entity>
+    <entity compositePrimaryKeyClass="WorkflowPK" abs="false" class="Workflow" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_1615849895727132">
+        <attributes>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="libelle" jbt="false" id="_1615849895917134">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="libelle" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_1615849896106135">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="deleted" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="mena.gov.bf.domain.enumeration.Etat" v="true" am="PRIVATE" name="etat" jbt="false" id="_1615849896300136">
+                <column name="etat" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <enumerated>STRING</enumerated>
+            </basic>
+            <one-to-many own="false" collection-type="java.util.Set" connected-entity-id="_1615849898794155" connected-attribute-id="_1615849899192160" v="true" am="PRIVATE" name="tacheWorkflows" dv="[ java.util.Set , java.util.HashSet ] new HashSet&lt;&gt;()" jbt="false" id="_1615849896300137">
+                <cascade/>
+            </one-to-many>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_1615849895728133">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="workflow"/>
+    </entity>
+    <entity compositePrimaryKeyClass="CandidatPK" abs="false" class="Candidat" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_1615849896302138">
+        <attributes>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="nomStructure" jbt="false" id="_1615849896490140">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="nom_structure" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="adresse" jbt="false" id="_1615849896674141">
+                <column name="adresse" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="email" jbt="false" id="_1615849896996142">
+                <column name="email" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_1615849897183143">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="deleted" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <one-to-many own="false" collection-type="java.util.Set" connected-entity-id="_1615849893646115" connected-attribute-id="_1615849895726129" v="true" am="PRIVATE" name="candidatLots" dv="[ java.util.Set , java.util.HashSet ] new HashSet&lt;&gt;()" jbt="false" id="_1615849897375144">
+                <cascade/>
+            </one-to-many>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_1615849896302139">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="candidat"/>
+    </entity>
+    <entity compositePrimaryKeyClass="LotPK" abs="false" class="Lot" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_1615849897377145">
+        <attributes>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="libelle" jbt="false" id="_1615849897571147">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="libelle" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Long" v="true" am="PRIVATE" name="activiteId" jbt="false" id="_1615849897769148">
+                <column name="activite_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Long" v="true" am="PRIVATE" name="cautionId" jbt="false" id="_1615849897972149">
+                <column name="caution_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_1615849898171150">
+                <column name="deleted" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="infructueux" jbt="false" id="_1615849898385151">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="infructueux" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="description" jbt="false" id="_1615849898593152">
+                <column name="description" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <one-to-many own="false" collection-type="java.util.Set" connected-entity-id="_1615849893646115" connected-attribute-id="_1615849895726128" v="true" am="PRIVATE" name="candidatLots" dv="[ java.util.Set , java.util.HashSet ] new HashSet&lt;&gt;()" jbt="false" id="_1615849898792153">
+                <cascade/>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Set" connected-entity-id="_1615849901024178" connected-attribute-id="_1615849902742194" v="true" am="PRIVATE" name="taches" dv="[ java.util.Set , java.util.HashSet ] new HashSet&lt;&gt;()" jbt="false" id="_1615849898793154">
+                <cascade/>
+            </one-to-many>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_1615849897377146">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="lot"/>
+    </entity>
+    <entity compositePrimaryKeyClass="TacheWorkflowPK" abs="false" class="TacheWorkflow" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_1615849898794155">
+        <attributes>
+            <basic attribute-type="java.time.LocalDate" v="true" am="PRIVATE" name="date" jbt="false" id="_1615849898997157">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="date" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_1615849898997158">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="deleted" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <many-to-one primaryKey="false" connected-entity-id="_1615849901024178" connected-attribute-id="_1615849902741191" fetch="LAZY" v="true" am="PRIVATE" name="tache" jbt="false" id="_1615849899191159">
+                <cascade/>
+            </many-to-one>
+            <many-to-one primaryKey="false" connected-entity-id="_1615849895727132" connected-attribute-id="_1615849896300137" fetch="LAZY" v="true" am="PRIVATE" name="workflow" jbt="false" id="_1615849899192160">
+                <cascade/>
+            </many-to-one>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_1615849898794156">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="tache_workflow"/>
+    </entity>
+    <entity compositePrimaryKeyClass="DelaiMessagePK" abs="false" class="DelaiMessage" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_1615849899193161">
+        <attributes>
+            <basic attribute-type="Integer" v="true" am="PRIVATE" name="tempsAlerte" jbt="false" id="_1615849899392163">
+                <column name="temps_alerte" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="mena.gov.bf.domain.enumeration.TypeMessage" v="true" am="PRIVATE" name="typeMessage" jbt="false" id="_1615849899600164">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="type_message" unique="false" nullable="false" insertable="true" updatable="true"/>
+                <enumerated>STRING</enumerated>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="message" jbt="false" id="_1615849899601165">
+                <column name="message" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_1615849899792166">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="deleted" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_1615849899193162">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="delai_message"/>
+    </entity>
+    <entity compositePrimaryKeyClass="CandidatCautionLotPK" abs="false" class="CandidatCautionLot" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_1615849899988167">
+        <attributes>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="description" jbt="false" id="_1615849900114169">
+                <column name="description" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="institutionFinanciere" jbt="false" id="_1615849900248170">
+                <column name="institution_financiere" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="java.time.LocalDate" v="true" am="PRIVATE" name="dateDebut" jbt="false" id="_1615849900383171">
+                <column name="date_debut" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Double" v="true" am="PRIVATE" name="montantCandidat" jbt="false" id="_1615849900383172">
+                <column name="montant_candidat" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Integer" v="true" am="PRIVATE" name="validationCandidat" jbt="false" id="_1615849900518173">
+                <column name="validation_candidat" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="depoullement" jbt="false" id="_1615849900645174">
+                <column name="depoullement" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_1615849900805175">
+                <column name="deleted" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <many-to-one primaryKey="false" connected-entity-id="_1615849893646115" fetch="LAZY" v="true" am="PRIVATE" name="candidatLot" jbt="false" id="_1615849901022176">
+                <cascade/>
+            </many-to-one>
+            <many-to-one primaryKey="false" connected-entity-id="_161584987994621" fetch="LAZY" v="true" am="PRIVATE" name="caution" jbt="false" id="_1615849901023177">
+                <cascade/>
+            </many-to-one>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_1615849899989168">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="candidat_caution_lot"/>
+    </entity>
+    <entity compositePrimaryKeyClass="TachePK" abs="false" class="Tache" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_1615849901024178">
+        <attributes>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="libelle" jbt="false" id="_1615849901250180">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="libelle" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="description" jbt="false" id="_1615849901449181">
+                <column name="description" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="mena.gov.bf.domain.enumeration.TypeTache" v="true" am="PRIVATE" name="typeTache" jbt="false" id="_1615849901667182">
+                <column name="type_tache" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <enumerated>STRING</enumerated>
+            </basic>
+            <basic attribute-type="java.time.LocalDate" v="true" am="PRIVATE" name="dateCreation" jbt="false" id="_1615849901668183">
+                <column name="date_creation" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_1615849901668184">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="deleted" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Long" v="true" am="PRIVATE" name="activiteId" jbt="false" id="_1615849902003185">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="activite_id" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="java.time.LocalDate" v="true" am="PRIVATE" name="dateDebut" jbt="false" id="_1615849902243186">
+                <column name="date_debut" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="java.time.LocalDate" v="true" am="PRIVATE" name="dateFin" jbt="false" id="_1615849902243187">
+                <column name="date_fin" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="objectId" jbt="false" id="_1615849902243188">
+                <column name="object_Id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Double" v="true" am="PRIVATE" name="etatAvancement" jbt="false" id="_1615849902482189">
+                <column name="etat_avancement" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="mena.gov.bf.domain.enumeration.Etat" v="true" am="PRIVATE" name="etat" jbt="false" id="_1615849902740190">
+                <column name="etat" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <enumerated>STRING</enumerated>
+            </basic>
+            <many-to-one primaryKey="false" connected-entity-id="_1615849897377145" connected-attribute-id="_1615849898793154" fetch="LAZY" v="true" am="PRIVATE" name="lot" jbt="false" id="_1615849902742194">
+                <cascade/>
+            </many-to-one>
+            <one-to-many own="false" collection-type="java.util.Set" connected-entity-id="_1615849898794155" connected-attribute-id="_1615849899191159" v="true" am="PRIVATE" name="tacheWorkflows" dv="[ java.util.Set , java.util.HashSet ] new HashSet&lt;&gt;()" jbt="false" id="_1615849902741191">
+                <cascade/>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Set" connected-entity-id="_161584988614555" connected-attribute-id="_161584988718062" v="true" am="PRIVATE" name="tacheEtapes" dv="[ java.util.Set , java.util.HashSet ] new HashSet&lt;&gt;()" jbt="false" id="_1615849902741192">
+                <cascade/>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Set" connected-entity-id="_16158498784307" connected-attribute-id="_161584987965315" v="true" am="PRIVATE" name="membreCommissions" dv="[ java.util.Set , java.util.HashSet ] new HashSet&lt;&gt;()" jbt="false" id="_1615849902742193">
+                <cascade/>
+            </one-to-many>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_1615849901024179">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="tache"/>
+    </entity>
+    <entity compositePrimaryKeyClass="DepouillementPK" abs="false" class="Depouillement" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_1615849902743195">
+        <attributes>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="description" jbt="false" id="_1615849902996197">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="description" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="java.time.LocalDate" v="true" am="PRIVATE" name="date" jbt="false" id="_1615849903228198">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="date" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="heureDebut" jbt="false" id="_1615849903229199">
+                <column name="heure_debut" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="heureFin" jbt="false" id="_1615849903528200">
+                <column name="heure_fin" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="lieu" jbt="false" id="_1615849903768201">
+                <column name="lieu" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="salle" jbt="false" id="_1615849903968202">
+                <column name="salle" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Long" v="true" am="PRIVATE" name="activiteId" jbt="false" id="_1615849904197203">
+                <column name="activite_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_1615849904534204">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="deleted" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="invalide" jbt="false" id="_1615849904812205">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="invalide" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <one-to-many own="false" collection-type="java.util.Set" connected-entity-id="_1615849893646115" connected-attribute-id="_1615849895727131" v="true" am="PRIVATE" name="candidatLots" dv="[ java.util.Set , java.util.HashSet ] new HashSet&lt;&gt;()" jbt="false" id="_1615849905120206">
+                <cascade/>
+            </one-to-many>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_1615849902743196">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="depouillement"/>
+    </entity>
+    <entity compositePrimaryKeyClass="TypeCautionPK" abs="false" class="TypeCaution" superclassId="_161584987970016" v="true" xre="false" m="false" rootElement="_16158498768413" id="_1615849905123207">
+        <attributes>
+            <basic attribute-type="String" v="true" am="PRIVATE" name="libelle" jbt="false" id="_1615849905433209">
+                <bv>
+                    <nn/>
+                </bv>
+                <column name="libelle" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <basic attribute-type="Boolean" v="true" am="PRIVATE" name="deleted" jbt="false" id="_1615849905692210">
+                <column name="deleted" unique="false" nullable="false" insertable="true" updatable="true"/>
+            </basic>
+            <id attribute-type="Long" v="true" am="PRIVATE" name="id" jbt="false" id="_1615849905123208">
+                <generated-value strategy="SEQUENCE" generator="sequenceGenerator"/>
+                <sequence-generator name="sequenceGenerator"/>
+            </id>
+        </attributes>
+        <table name="type_caution"/>
+    </entity>
+    <wsl>
+        <ws n="Main" id="_161623912945795">
+            <i ref="_1615849895727132" x="1105" y="822"/>
+            <i ref="_1615849905123207" x="336" y="1167"/>
+            <i ref="_1615849892170106" x="336" y="1764"/>
+            <i ref="_1615849896302138" x="1382" y="1167"/>
+            <i ref="_161584987994621" x="32" y="822"/>
+            <i ref="_161584988913578" x="1643" y="1412"/>
+            <i ref="_161584988989885" x="336" y="477"/>
+            <i ref="_1615849899193161" x="567" y="1412"/>
+            <i ref="_1615849897377145" x="32" y="32"/>
+            <i ref="_1615849902743195" x="567" y="822"/>
+            <i ref="_161584987970016" x="811" y="1167"/>
+            <i ref="_161584988737167" x="1382" y="1764"/>
+            <i ref="_161584989065190" x="32" y="2049"/>
+            <i ref="_161584989109798" x="811" y="1764"/>
+            <i ref="_161584988569950" x="1643" y="2049"/>
+            <i ref="_16158498775954" x="1898" y="1167"/>
+            <i ref="_1615849901024178" x="567" y="32"/>
+            <i ref="_1615849893646115" x="1105" y="32"/>
+            <i ref="_1615849898794155" x="1382" y="477"/>
+            <i ref="_16158498784307" x="32" y="1412"/>
+            <i ref="_1615849899988167" x="1105" y="2049"/>
+            <i ref="_161584988614555" x="811" y="477"/>
+            <i ref="_161584988145029" x="1105" y="1412"/>
+            <i ref="_161584988794372" x="2243" y="1167"/>
+            <i ref="_161584988424842" x="567" y="2049"/>
+        </ws>
+    </wsl>
+</entity-mappings>

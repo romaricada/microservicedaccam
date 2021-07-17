@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity ReclamationCandidatLot.
+    -->
+    <changeSet id="20200529124205-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="reclamation_id"
+                                 baseTableName="reclamation_candidat_lot"
+                                 constraintName="fk_reclamation_candidat_lot_reclamation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="reclamation"/>
+
+        <addForeignKeyConstraint baseColumnNames="candidat_lot_id"
+                                 baseTableName="reclamation_candidat_lot"
+                                 constraintName="fk_reclamation_candidat_lot_candidat_lot_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="candidat_lot"/>
+
+        <addForeignKeyConstraint baseColumnNames="decision_id"
+                                 baseTableName="reclamation_candidat_lot"
+                                 constraintName="fk_reclamation_candidat_lot_decision_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="decision"/>
+
+    </changeSet>
+</databaseChangeLog>
